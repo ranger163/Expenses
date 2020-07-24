@@ -49,10 +49,31 @@ class MyHomePage extends StatelessWidget {
           ),
           Column(
             children: transactions
-                .map((transaction) => Card(
-                      child: Text('${transaction.title}'),
-                    ))
+                .map((transaction) => TransactionItem(transaction))
                 .toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TransactionItem extends StatelessWidget {
+  final Transaction _transaction;
+
+  TransactionItem(this._transaction);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Row(
+        children: <Widget>[
+          Container(child: Text(_transaction.amount.toString())),
+          Column(
+            children: <Widget>[
+              Text(_transaction.title),
+              Text(_transaction.date.toString()),
+            ],
           ),
         ],
       ),
