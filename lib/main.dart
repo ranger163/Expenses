@@ -83,14 +83,24 @@ class TransactionItem extends StatelessWidget {
               _transaction.amount.toString() + " LE",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 18,
                 color: Colors.blue,
               ),
             ),
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Text(_transaction.title),
-              Text(_transaction.date.toString()),
+              Text(
+                _transaction.title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Text(
+                _transaction.date.toString(),
+                style: TextStyle(fontSize: 14, color: Colors.grey),
+              ),
             ],
           ),
         ],
