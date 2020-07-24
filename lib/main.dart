@@ -69,17 +69,24 @@ class TransactionItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Container(
-              margin: EdgeInsets.symmetric(
-                vertical: 10,
-                horizontal: 15,
-              ),
-              decoration: BoxDecoration(
-                  border: Border.all(
+            margin: EdgeInsets.symmetric(
+              vertical: 10,
+              horizontal: 15,
+            ),
+            decoration: BoxDecoration(
+                border: Border.all(
+              color: Colors.blue,
+              width: 1,
+            )),
+            padding: EdgeInsets.all(10),
+            child: Text(
+              _transaction.amount.toString() + " LE",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
                 color: Colors.blue,
-                width: 1,
-              )),
-              padding: EdgeInsets.all(10),
-              child: Text(_transaction.amount.toString())),
+              ),
+            ),
+          ),
           Column(
             children: <Widget>[
               Text(_transaction.title),
