@@ -99,7 +99,7 @@ class TransactionItem extends StatelessWidget {
                 ),
               ),
               Text(
-                DateFormat().format(_transaction.date),
+                DateFormat.yMMMd().format(_transaction.date),
                 style: TextStyle(fontSize: 14, color: Colors.grey),
               ),
             ],
