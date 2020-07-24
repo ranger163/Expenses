@@ -48,10 +48,11 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Column(
-            children: transactions.map((transaction) =>
-                Card(
-                  child: Text('${transaction.title}'),
-                );).toList(),
+            children: transactions
+                .map((transaction) => Card(
+                      child: Text('${transaction.title}'),
+                    ))
+                .toList(),
           ),
         ],
       ),
