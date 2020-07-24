@@ -23,14 +23,18 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter Demo'),
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
             width: double.infinity,
             child: Card(
+              color: Colors.blue,
               child: Text('CHARTS'),
             ),
           ),
           Card(
+            color: Colors.red,
             child: Text('LIST OF EXPENSES'),
           ),
         ],
