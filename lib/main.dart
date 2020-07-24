@@ -80,7 +80,7 @@ class TransactionItem extends StatelessWidget {
             )),
             padding: EdgeInsets.all(10),
             child: Text(
-              _transaction.amount.toString() + " LE",
+              '\$${_transaction.amount}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
