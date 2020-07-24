@@ -68,7 +68,18 @@ class TransactionItem extends StatelessWidget {
     return Card(
       child: Row(
         children: <Widget>[
-          Container(child: Text(_transaction.amount.toString())),
+          Container(
+              margin: EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 15,
+              ),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                color: Colors.blue,
+                width: 1,
+              )),
+              padding: EdgeInsets.all(10),
+              child: Text(_transaction.amount.toString())),
           Column(
             children: <Widget>[
               Text(_transaction.title),
