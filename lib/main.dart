@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
         id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
   ];
 
+  /// Adding new transaction information to the list
   void _addTransaction(String title, double amount) {
     setState(() {
       _transactionsList.add(Transaction(
@@ -47,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  /// Starting bottom sheet to let user fill his transaction info
   void _startAddNewTransactionSheet(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -60,7 +62,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.add), onPressed: () {}),
+          IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => _startAddNewTransactionSheet(context)),
         ],
         title: Text('Flutter Demo'),
       ),
@@ -87,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _startAddNewTransactionSheet(context),
       ),
     );
   }

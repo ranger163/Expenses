@@ -24,7 +24,6 @@ class TransactionInputForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(top: 16, bottom: 16),
       elevation: 4,
       child: Container(
         padding: EdgeInsets.all(8),
