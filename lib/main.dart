@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter Demo'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+//        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Container(
@@ -48,9 +48,10 @@ class MyHomePage extends StatelessWidget {
               child: Text('CHARTS'),
             ),
           ),
+          InputForm(),
           Column(
             children: transactions
-                .map((transaction) => TransactionItem(transaction))
+                .map((transaction) => TransactionsItemList(transaction))
                 .toList(),
           ),
         ],
@@ -59,10 +60,40 @@ class MyHomePage extends StatelessWidget {
   }
 }
 
-class TransactionItem extends StatelessWidget {
+/// This class is used to hold the input form widgets
+class InputForm extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4,
+      child: Container(
+        padding: EdgeInsets.all(8),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: <Widget>[
+            TextField(
+              decoration: InputDecoration(labelText: 'Title'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Amount'),
+            ),
+            FlatButton(
+              child: Text('Add transaction'),
+              textColor: Colors.blue,
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// This class is used to Display transaction item widget with its data
+class TransactionsItemList extends StatelessWidget {
   final Transaction _transaction;
 
-  TransactionItem(this._transaction);
+  TransactionsItemList(this._transaction);
 
   @override
   Widget build(BuildContext context) {
