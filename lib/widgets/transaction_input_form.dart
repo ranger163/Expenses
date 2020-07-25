@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
 /// This class is used to hold the input form widgets
-class TransactionInputForm extends StatelessWidget {
+class TransactionInputForm extends StatefulWidget {
 //  String titleInput;
 //  String amountInput;
 
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
   final Function _addTransaction;
 
   TransactionInputForm(this._addTransaction);
+
+  @override
+  _TransactionInputFormState createState() => _TransactionInputFormState();
+}
+
+class _TransactionInputFormState extends State<TransactionInputForm> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void _submitTransactionForm() {
     final enteredTitle = titleController.text;
@@ -18,7 +25,7 @@ class TransactionInputForm extends StatelessWidget {
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-    _addTransaction(enteredTitle, enteredAmount);
+    widget._addTransaction(enteredTitle, enteredAmount);
   }
 
   @override
