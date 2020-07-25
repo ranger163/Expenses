@@ -43,6 +43,7 @@ class MyHomePage extends StatelessWidget {
         children: <Widget>[
           Container(
             width: double.infinity,
+            margin: EdgeInsets.only(left: 16, right: 16, top: 8),
             child: Card(
               color: Colors.blue,
               child: Text('CHARTS'),
@@ -62,9 +63,13 @@ class MyHomePage extends StatelessWidget {
 
 /// This class is used to hold the input form widgets
 class InputForm extends StatelessWidget {
+  String titleInput;
+  String amountInput;
+
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.all(16),
       elevation: 4,
       child: Container(
         padding: EdgeInsets.all(8),
@@ -73,14 +78,18 @@ class InputForm extends StatelessWidget {
           children: <Widget>[
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
+              onChanged: (value) => titleInput = value,
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
+              onChanged: (value) => amountInput = value,
             ),
             FlatButton(
               child: Text('Add transaction'),
               textColor: Colors.blue,
-              onPressed: () {},
+              onPressed: () {
+                print('Title: $titleInput\nAmount: $amountInput');
+              },
             ),
           ],
         ),
@@ -98,6 +107,7 @@ class TransactionsItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.only(left: 16, right: 16, top: 8),
       child: Row(
         children: <Widget>[
           Container(
