@@ -12,8 +12,8 @@ class TransactionsItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView(
-        children: _transactionsList.map((transaction) {
+      child: ListView.builder(
+        itemBuilder: (context,index){
           return Card(
             elevation: 2,
             margin: EdgeInsets.only(top: 8),
@@ -26,12 +26,12 @@ class TransactionsItemList extends StatelessWidget {
                   ),
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: Colors.blue,
-                    width: 1,
-                  )),
+                        color: Colors.blue,
+                        width: 1,
+                      )),
                   padding: EdgeInsets.all(10),
                   child: Text(
-                    '\$${transaction.amount}',
+                    '\$${_transactionsList[index].amount}',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,
@@ -43,13 +43,13 @@ class TransactionsItemList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      transaction.title,
+                      _transactionsList[index].title,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      DateFormat.yMMMd().format(transaction.date),
+                      DateFormat.yMMMd().format(_transactionsList[index].date),
                       style: TextStyle(fontSize: 14, color: Colors.grey),
                     ),
                   ],
@@ -57,7 +57,7 @@ class TransactionsItemList extends StatelessWidget {
               ],
             ),
           );
-        }).toList(),
+        },itemCount: _transactionsList.length,
       ),
     );
   }
