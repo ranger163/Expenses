@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Personal Expenses',
       home: MyHomePage(),
     );
   }
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.add),
               onPressed: () => _startAddNewTransactionSheet(context)),
         ],
-        title: Text('Flutter Demo'),
+        title: Text('Personal Expenses'),
       ),
       body: SingleChildScrollView(
         child: Container(
