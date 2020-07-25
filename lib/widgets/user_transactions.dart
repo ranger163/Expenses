@@ -16,18 +16,16 @@ class _UserTransactionsState extends State<UserTransactions> {
         id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
     Transaction(
         id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
-    Transaction(
-        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
-    Transaction(
-        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
   ];
 
   void _addTransaction(String title, double amount) {
-    _transactionsList.add(Transaction(
-        id: DateTime.now().toString(),
-        title: title,
-        amount: amount,
-        date: DateTime.now()));
+    setState(() {
+      _transactionsList.add(Transaction(
+          id: DateTime.now().toString(),
+          title: title,
+          amount: amount,
+          date: DateTime.now()));
+    });
   }
 
   @override

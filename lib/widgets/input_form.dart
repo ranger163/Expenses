@@ -7,6 +7,9 @@ class TransactionInputForm extends StatelessWidget {
 
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  final Function _addTransaction;
+
+  TransactionInputForm(this._addTransaction);
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +35,7 @@ class TransactionInputForm extends StatelessWidget {
               child: Text('Add transaction'),
               textColor: Colors.blue,
               onPressed: () {
-                print(
-                    'Title: ${titleController.text}\nAmount: ${amountController.text}');
+                _addTransaction(titleController.text, double.parse(amountController.text));
               },
             ),
           ],
