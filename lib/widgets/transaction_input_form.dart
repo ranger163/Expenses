@@ -14,7 +14,7 @@ class TransactionInputForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(top: 16,bottom: 16),
+      margin: EdgeInsets.only(top: 16, bottom: 16),
       elevation: 4,
       child: Container(
         padding: EdgeInsets.all(8),
@@ -29,13 +29,16 @@ class TransactionInputForm extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               controller: amountController,
+              keyboardType: TextInputType.numberWithOptions(
+                  decimal: true), // Using numberWithOptions to support IOS
 //              onChanged: (value) => amountInput = value,
             ),
             FlatButton(
               child: Text('Add transaction'),
               textColor: Colors.blue,
               onPressed: () {
-                _addTransaction(titleController.text, double.parse(amountController.text));
+                _addTransaction(
+                    titleController.text, double.parse(amountController.text));
               },
             ),
           ],
