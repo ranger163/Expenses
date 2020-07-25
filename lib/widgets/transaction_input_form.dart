@@ -56,7 +56,7 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
             ),
             FlatButton(
               child: Text('Add transaction'),
-              textColor: Colors.blue,
+              textColor: Theme.of(context).primaryColor,
               onPressed: () {
                 _submitTransactionForm();
               },
