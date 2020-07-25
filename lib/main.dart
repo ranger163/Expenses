@@ -24,20 +24,23 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter Demo'),
       ),
       body: SingleChildScrollView(
-        child: Column(
+        child: Container(
+          margin: EdgeInsets.all(16),
+          child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(left: 16, right: 16, top: 8),
-              child: Card(
-                color: Colors.blue,
-                child: Text('CHARTS'),
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(top: 8),
+                child: Card(
+                  color: Colors.blue,
+                  child: Text('CHARTS'),
+                ),
               ),
-            ),
-            UserTransactions(),
-          ],
+              UserTransactions(),
+            ],
+          ),
         ),
       ),
     );
