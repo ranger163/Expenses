@@ -1,4 +1,6 @@
-import 'package:expenses/widgets/user_transactions.dart';
+import 'package:expenses/models/transaction.dart';
+import 'package:expenses/widgets/transaction_input_form.dart';
+import 'package:expenses/widgets/transactions_list.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +18,43 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<Transaction> _transactionsList = [
+    Transaction(
+        id: "id1", title: "New Shoes", amount: 600.00, date: DateTime.now()),
+    Transaction(
+        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
+    Transaction(
+        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
+    Transaction(
+        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
+    Transaction(
+        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
+  ];
+
+  void _addTransaction(String title, double amount) {
+    setState(() {
+      _transactionsList.add(Transaction(
+          id: DateTime.now().toString(),
+          title: title,
+          amount: amount,
+          date: DateTime.now()));
+    });
+  }
+
+  void _startAddNewTransactionSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return TransactionInputForm(_addTransaction);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +79,7 @@ class MyHomePage extends StatelessWidget {
                   child: Text('CHARTS'),
                 ),
               ),
-              UserTransactions(),
+              TransactionsItemList(_transactionsList),
             ],
           ),
         ),
