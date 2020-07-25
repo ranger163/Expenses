@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// This class is used to hold the input form widgets
-class InputForm extends StatelessWidget {
+class TransactionInputForm extends StatelessWidget {
 //  String titleInput;
 //  String amountInput;
 

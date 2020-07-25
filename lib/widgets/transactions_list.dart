@@ -3,24 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 /// This class is used to Display transaction item widget with its data
-class TransactionsItemList extends StatefulWidget {
-  @override
-  _TransactionsItemListState createState() => _TransactionsItemListState();
-}
+class TransactionsItemList extends StatelessWidget {
+  final List<Transaction> _transactionsList;
 
-class _TransactionsItemListState extends State<TransactionsItemList> {
-  final List<Transaction> _transactionsList = [
-    Transaction(
-        id: "id1", title: "New Shoes", amount: 600.00, date: DateTime.now()),
-    Transaction(
-        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
-    Transaction(
-        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
-    Transaction(
-        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
-    Transaction(
-        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
-  ];
+  TransactionsItemList(this._transactionsList);
 
   @override
   Widget build(BuildContext context) {

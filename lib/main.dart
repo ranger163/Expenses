@@ -1,5 +1,4 @@
-import 'package:expenses/widgets/input_form.dart';
-import 'package:expenses/widgets/transactions_list.dart';
+import 'package:expenses/widgets/user_transactions.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,8 +35,7 @@ class MyHomePage extends StatelessWidget {
               child: Text('CHARTS'),
             ),
           ),
-          InputForm(),
-          TransactionsItemList(),
+          UserTransactions(),
         ],
       ),
     );
