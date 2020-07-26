@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// This class is used to hold the input form widgets
@@ -54,9 +55,23 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
               },
 //              onChanged: (value) => amountInput = value,
             ),
-            FlatButton(
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Expanded(flex: 2, child: Text('No Date Chosen!')),
+                  FlatButton(
+                    child: Text('Choose Date'),
+                    textColor: Theme.of(context).primaryColor,
+                    onPressed: () {},
+                  )
+                ],
+              ),
+            ),
+            RaisedButton(
               child: Text('Add transaction'),
-              textColor: Theme.of(context).primaryColor,
+              textColor: Colors.white,
+              color: Theme.of(context).primaryColor,
               onPressed: () {
                 _submitTransactionForm();
               },
