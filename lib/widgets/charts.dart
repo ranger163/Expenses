@@ -21,7 +21,7 @@ class Charts extends StatelessWidget {
         }
       });
       return {'day': DateFormat.E().format(weekDay), 'amount': totalAmountSum};
-    });
+    }).reversed.toList();
   }
 
   double get totalSpending {
