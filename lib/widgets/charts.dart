@@ -31,8 +31,8 @@ class Charts extends StatelessWidget {
       margin: EdgeInsets.all(8),
       child: Row(
         children: groupedTransactionValues
-            .map((e) => Column(
-                  children: <Widget>[Text('Hi')],
+            .map((data) => Column(
+                  children: <Widget>[Text('${data['day']} ${data['amount']}')],
                 ))
             .toList(),
       ),
