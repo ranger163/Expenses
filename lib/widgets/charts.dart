@@ -24,7 +24,7 @@ class Charts extends StatelessWidget {
     });
   }
 
-  double get maxSpending {
+  double get totalSpending {
     return groupedTransactionValues.fold(
         0.0, (previousValue, element) => previousValue + element['amount']);
   }
@@ -37,8 +37,12 @@ class Charts extends StatelessWidget {
         margin: EdgeInsets.all(8),
         child: Row(
             children: groupedTransactionValues
-                .map((data) => ChartBar(data['day'], data['amount'],
-                    (data['amount'] as double) / maxSpending))
+                .map((data) => ChartBar(
+                    data['day'],
+                    data['amount'],
+                    totalSpending == 0.0
+                        ? 0.0
+                        : (data['amount'] as double) / totalSpending),)
                 .toList()));
   }
 }
