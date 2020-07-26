@@ -1,4 +1,5 @@
 import 'package:expenses/models/transaction.dart';
+import 'package:expenses/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -27,15 +28,11 @@ class Charts extends StatelessWidget {
   Widget build(BuildContext context) {
     print(groupedTransactionValues);
     return Card(
-      elevation: 4,
-      margin: EdgeInsets.all(8),
-      child: Row(
-        children: groupedTransactionValues
-            .map((data) => Column(
-                  children: <Widget>[Text('${data['day']} ${data['amount']}')],
-                ))
-            .toList(),
-      ),
-    );
+        elevation: 4,
+        margin: EdgeInsets.all(8),
+        child: Row(
+            children: groupedTransactionValues
+                .map((data) => ChartBar(data['day'], data['amount'], 0.5))
+                .toList()));
   }
 }
