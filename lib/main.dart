@@ -29,8 +29,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactionsList = [
-  ];
+  final List<Transaction> _transactionsList = [];
 
   List<Transaction> get _recentTransactions {
     return _transactionsList.where((element) {
