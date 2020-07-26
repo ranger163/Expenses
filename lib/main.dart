@@ -1,4 +1,5 @@
 import 'package:expenses/models/transaction.dart';
+import 'package:expenses/widgets/charts.dart';
 import 'package:expenses/widgets/transaction_input_form.dart';
 import 'package:expenses/widgets/transactions_list.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.green,
-        accentColor: Colors.amber,fontFamily: 'Quicksand'
-      ),
+          primarySwatch: Colors.green,
+          accentColor: Colors.amber,
+          fontFamily: 'Quicksand'),
       home: MyHomePage(),
     );
   }
@@ -29,7 +30,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactionsList = [
-  ];
+    Transaction(
+        id: "id1", title: "New Shoes", amount: 600.00, date: DateTime.now()),
+    Transaction(
+        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
+    Transaction(
+        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
+    Transaction(
+        id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
+    Transaction(
+        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),];
 
   /// Adding new transaction information to the list
   void _addTransaction(String title, double amount) {
@@ -72,10 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.only(top: 8),
-                child: Card(
-                  color: Colors.blue,
-                  child: Text('CHARTS'),
-                ),
+                child: Charts(_transactionsList),
               ),
               TransactionsItemList(_transactionsList),
             ],
