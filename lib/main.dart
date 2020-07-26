@@ -39,7 +39,14 @@ class _MyHomePageState extends State<MyHomePage> {
     Transaction(
         id: "id2", title: "New Shirt", amount: 450.50, date: DateTime.now()),
     Transaction(
-        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),];
+        id: "id3", title: "New Pants", amount: 300.00, date: DateTime.now()),
+  ];
+
+  List<Transaction> get _recentTransactions {
+    return _transactionsList.where((element) {
+      return element.date.isAfter(element.date.subtract(Duration(days: 7)));
+    }).toList();
+  }
 
   /// Adding new transaction information to the list
   void _addTransaction(String title, double amount) {
@@ -82,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.only(top: 8),
-                child: Charts(_transactionsList),
+                child: Charts(_recentTransactions),
               ),
               TransactionsItemList(_transactionsList),
             ],
