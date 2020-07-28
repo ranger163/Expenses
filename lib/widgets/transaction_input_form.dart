@@ -30,6 +30,14 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
     Navigator.of(context).pop();
   }
 
+  void _presentDatePicker() {
+    showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime.now());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -63,7 +71,7 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
                   FlatButton(
                     child: Text('Choose Date'),
                     textColor: Theme.of(context).primaryColor,
-                    onPressed: () {},
+                    onPressed: _presentDatePicker,
                   )
                 ],
               ),
