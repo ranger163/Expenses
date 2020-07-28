@@ -28,7 +28,7 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
     if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedDate == null) {
       return;
     }
-    widget._addTransaction(enteredTitle, enteredAmount);
+    widget._addTransaction(enteredTitle, enteredAmount, _selectedDate);
     Navigator.of(context).pop();
   }
 
