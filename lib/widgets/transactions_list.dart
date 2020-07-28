@@ -5,8 +5,9 @@ import 'package:intl/intl.dart';
 /// This class is used to Display transaction item widget with its data
 class TransactionsItemList extends StatelessWidget {
   final List<Transaction> _transactionsList;
+  final Function _removeTransaction;
 
-  TransactionsItemList(this._transactionsList);
+  TransactionsItemList(this._transactionsList, this._removeTransaction);
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +48,12 @@ class TransactionsItemList extends StatelessWidget {
                     ),
                     subtitle: Text(DateFormat.yMMMd()
                         .format(_transactionsList[index].date)),
+                    trailing: IconButton(
+                      icon: Icon(Icons.delete),
+                      color: Theme.of(context).errorColor,
+                      onPressed: () =>
+                          _removeTransaction(_transactionsList[index].id),
+                    ),
                   ),
                 );
               },
