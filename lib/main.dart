@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: appBar,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.all(16),
+          margin: EdgeInsets.only(left: 16,right: 16,top: 16),
           child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: (MediaQuery.of(context).size.height -
                         appBar.preferredSize.height -
                         MediaQuery.of(context).padding.top) *
-                    0.4,
+                    0.2,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Charts(_recentTransactions),
               ),
@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: (MediaQuery.of(context).size.height -
                         appBar.preferredSize.height -
                         MediaQuery.of(context).padding.top) *
-                    0.6,
+                    0.8,
                 child: _transactionsList.isEmpty
                     ? Column(
                         children: <Widget>[
