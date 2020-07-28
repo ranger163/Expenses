@@ -92,10 +92,28 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Container(
                 width: double.infinity,
-                margin: EdgeInsets.only(top: 8),
+                margin: EdgeInsets.only(bottom: 8),
                 child: Charts(_recentTransactions),
               ),
-              TransactionsItemList(_transactionsList,_removeTransaction),
+              SizedBox(
+                height: 20,
+              ),
+              _transactionsList.isEmpty
+                  ? Column(
+                      children: <Widget>[
+                        Container(
+                            height: 200,
+                            child: Image.asset(
+                              'assets/images/waiting.png',
+                              fit: BoxFit.cover,
+                            )),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text('No transactions added yet.')
+                      ],
+                    )
+                  : TransactionsItemList(_transactionsList, _removeTransaction),
             ],
           ),
         ),
