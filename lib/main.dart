@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: appBar,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(left: 16,right: 16,top: 16),
+          margin: EdgeInsets.only(left: 16,right: 16),
           child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -99,9 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     0.2,
                 margin: EdgeInsets.only(bottom: 8),
                 child: Charts(_recentTransactions),
-              ),
-              SizedBox(
-                height: 20,
               ),
               Container(
                 height: (MediaQuery.of(context).size.height -
