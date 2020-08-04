@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:expenses/models/transaction.dart';
 import 'package:expenses/widgets/charts.dart';
 import 'package:expenses/widgets/transaction_input_form.dart';
@@ -85,9 +87,11 @@ class _MyHomePageState extends State<MyHomePage> {
     final appBar = AppBar(
       title: Text('Personal Expenses'),
       actions: <Widget>[
-        IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _startAddNewTransactionSheet(context)),
+        Platform.isIOS
+            ? IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () => _startAddNewTransactionSheet(context))
+            : Container(),
       ],
     );
 
@@ -132,7 +136,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text('Show Charts'),
-                    Switch(
+                    Switch.adaptive(
+                        activeColor: Theme.of(context).accentColor,
                         value: _showCharts,
                         onChanged: (value) {
                           setState(() {
@@ -167,10 +172,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () => _startAddNewTransactionSheet(context),
-      ),
+      floatingActionButton: Platform.isIOS
+          ? Container()
+          : FloatingActionButton(
+              child: Icon(Icons.add),
+              onPressed: () => _startAddNewTransactionSheet(context),
+            ),
     );
   }
 }
