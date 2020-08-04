@@ -136,50 +136,52 @@ class _MyHomePageState extends State<MyHomePage> {
           : TransactionsItemList(_transactionsList, _removeTransaction),
     );
 
-    final pageBody = SingleChildScrollView(
-      child: Container(
-        margin: EdgeInsets.only(left: 16, right: 16),
-        child: Column(
+    final pageBody = SafeArea(
+      child: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.only(left: 16, right: 16),
+          child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            if (isLandscape)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Show Charts'),
-                  Switch.adaptive(
-                      activeColor: Theme.of(context).accentColor,
-                      value: _showCharts,
-                      onChanged: (value) {
-                        setState(() {
-                          _showCharts = value;
-                        });
-                      }),
-                ],
-              ),
-            if (!isLandscape)
-              Container(
-                height: (mediaQuery.size.height -
-                        appBar.preferredSize.height -
-                        mediaQuery.padding.top) *
-                    0.2,
-                margin: EdgeInsets.only(bottom: 8),
-                child: Charts(_recentTransactions),
-              ),
-            if (!isLandscape) txListWidget,
-            if (isLandscape)
-              _showCharts
-                  ? Container(
-                      height: (mediaQuery.size.height -
-                              appBar.preferredSize.height -
-                              mediaQuery.padding.top) *
-                          0.7,
-                      margin: EdgeInsets.only(bottom: 8),
-                      child: Charts(_recentTransactions),
-                    )
-                  : txListWidget
-          ],
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              if (isLandscape)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text('Show Charts'),
+                    Switch.adaptive(
+                        activeColor: Theme.of(context).accentColor,
+                        value: _showCharts,
+                        onChanged: (value) {
+                          setState(() {
+                            _showCharts = value;
+                          });
+                        }),
+                  ],
+                ),
+              if (!isLandscape)
+                Container(
+                  height: (mediaQuery.size.height -
+                          appBar.preferredSize.height -
+                          mediaQuery.padding.top) *
+                      0.2,
+                  margin: EdgeInsets.only(bottom: 8),
+                  child: Charts(_recentTransactions),
+                ),
+              if (!isLandscape) txListWidget,
+              if (isLandscape)
+                _showCharts
+                    ? Container(
+                        height: (mediaQuery.size.height -
+                                appBar.preferredSize.height -
+                                mediaQuery.padding.top) *
+                            0.7,
+                        margin: EdgeInsets.only(bottom: 8),
+                        child: Charts(_recentTransactions),
+                      )
+                    : txListWidget
+            ],
+          ),
         ),
       ),
     );
