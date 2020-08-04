@@ -3,13 +3,12 @@ import 'package:expenses/widgets/charts.dart';
 import 'package:expenses/widgets/transaction_input_form.dart';
 import 'package:expenses/widgets/transactions_list.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 void main() {
   /// Using these functions to lock screen orientation to portrait
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+//  WidgetsFlutterBinding.ensureInitialized();
+//  SystemChrome.setPreferredOrientations(
+//      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp());
 }
 
@@ -43,6 +42,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactionsList = [];
+  bool _showCharts = false;
 
   List<Transaction> get _recentTransactions {
     return _transactionsList.where((element) {
@@ -97,37 +97,51 @@ class _MyHomePageState extends State<MyHomePage> {
 //        mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.2,
-                margin: EdgeInsets.only(bottom: 8),
-                child: Charts(_recentTransactions),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text('Show Charts'),
+                  Switch(
+                      value: _showCharts,
+                      onChanged: (value) {
+                        setState(() {
+                          _showCharts = value;
+                        });
+                      }),
+                ],
               ),
-              Container(
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height -
-                        MediaQuery.of(context).padding.top) *
-                    0.8,
-                child: _transactionsList.isEmpty
-                    ? Column(
-                        children: <Widget>[
-                          Container(
-                              height: 200,
-                              child: Image.asset(
-                                'assets/images/waiting.png',
-                                fit: BoxFit.cover,
-                              )),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text('No transactions added yet.')
-                        ],
-                      )
-                    : TransactionsItemList(
-                        _transactionsList, _removeTransaction),
-              ),
+              _showCharts
+                  ? Container(
+                      height: (MediaQuery.of(context).size.height -
+                              appBar.preferredSize.height -
+                              MediaQuery.of(context).padding.top) *
+                          0.2,
+                      margin: EdgeInsets.only(bottom: 8),
+                      child: Charts(_recentTransactions),
+                    )
+                  : Container(
+                      height: (MediaQuery.of(context).size.height -
+                              appBar.preferredSize.height -
+                              MediaQuery.of(context).padding.top) *
+                          0.8,
+                      child: _transactionsList.isEmpty
+                          ? Column(
+                              children: <Widget>[
+                                Container(
+                                    height: 200,
+                                    child: Image.asset(
+                                      'assets/images/waiting.png',
+                                      fit: BoxFit.cover,
+                                    )),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('No transactions added yet.')
+                              ],
+                            )
+                          : TransactionsItemList(
+                              _transactionsList, _removeTransaction),
+                    ),
             ],
           ),
         ),
