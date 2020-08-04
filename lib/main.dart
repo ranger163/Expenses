@@ -91,6 +91,33 @@ class _MyHomePageState extends State<MyHomePage> {
       ],
     );
 
+    final txListWidget = Container(
+      height: (MediaQuery.of(context).size.height -
+              appBar.preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.7,
+      child: _transactionsList.isEmpty
+          ? LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  children: <Widget>[
+                    Container(
+                        height: constraints.maxHeight * 0.6,
+                        child: Image.asset(
+                          'assets/images/waiting.png',
+                          fit: BoxFit.cover,
+                        )),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text('No transactions added yet.')
+                  ],
+                );
+              },
+            )
+          : TransactionsItemList(_transactionsList, _removeTransaction),
+    );
+
     return Scaffold(
       appBar: appBar,
       body: SingleChildScrollView(
@@ -114,42 +141,27 @@ class _MyHomePageState extends State<MyHomePage> {
                         }),
                   ],
                 ),
-              _showCharts
-                  ? Container(
-                      height: (MediaQuery.of(context).size.height -
-                              appBar.preferredSize.height -
-                              MediaQuery.of(context).padding.top) *
-                          0.7,
-                      margin: EdgeInsets.only(bottom: 8),
-                      child: Charts(_recentTransactions),
-                    )
-                  : Container(
-                      height: (MediaQuery.of(context).size.height -
-                              appBar.preferredSize.height -
-                              MediaQuery.of(context).padding.top) *
-                          0.7,
-                      child: _transactionsList.isEmpty
-                          ? LayoutBuilder(
-                              builder: (context, constraints) {
-                                return Column(
-                                  children: <Widget>[
-                                    Container(
-                                        height: constraints.maxHeight * 0.6,
-                                        child: Image.asset(
-                                          'assets/images/waiting.png',
-                                          fit: BoxFit.cover,
-                                        )),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text('No transactions added yet.')
-                                  ],
-                                );
-                              },
-                            )
-                          : TransactionsItemList(
-                              _transactionsList, _removeTransaction),
-                    ),
+              if (!isLandscape)
+                Container(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height -
+                          MediaQuery.of(context).padding.top) *
+                      0.2,
+                  margin: EdgeInsets.only(bottom: 8),
+                  child: Charts(_recentTransactions),
+                ),
+              if (!isLandscape) txListWidget,
+              if (isLandscape)
+                _showCharts
+                    ? Container(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height -
+                                MediaQuery.of(context).padding.top) *
+                            0.7,
+                        margin: EdgeInsets.only(bottom: 8),
+                        child: Charts(_recentTransactions),
+                      )
+                    : txListWidget
             ],
           ),
         ),
