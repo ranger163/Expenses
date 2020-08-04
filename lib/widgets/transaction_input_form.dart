@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -53,10 +55,10 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
         elevation: 4,
         child: Container(
           padding: EdgeInsets.only(
-          top: 10,
-          left: 10,
-          right: 10,
-          bottom: MediaQuery.of(context).viewInsets.bottom + 10),
+              top: 10,
+              left: 10,
+              right: 10,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
@@ -84,11 +86,16 @@ class _TransactionInputFormState extends State<TransactionInputForm> {
                         child: Text(_selectedDate != null
                             ? 'Picked Date: ${DateFormat.yMMMd().format(_selectedDate)}'
                             : 'No Date Chosen!')),
-                    FlatButton(
-                      child: Text('Choose Date'),
-                      textColor: Theme.of(context).primaryColor,
-                      onPressed: _presentDatePicker,
-                    )
+                    Platform.isIOS
+                        ? CupertinoButton(
+                            child: Text('Choose Date'),
+                            onPressed: _presentDatePicker,
+                          )
+                        : FlatButton(
+                            child: Text('Choose Date'),
+                            textColor: Theme.of(context).primaryColor,
+                            onPressed: _presentDatePicker,
+                          )
                   ],
                 ),
               ),
