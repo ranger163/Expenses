@@ -3,8 +3,13 @@ import 'package:expenses/widgets/charts.dart';
 import 'package:expenses/widgets/transaction_input_form.dart';
 import 'package:expenses/widgets/transactions_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  /// Using these functions to lock screen orientation to portrait
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(MyApp());
 }
 
@@ -87,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: appBar,
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(left: 16,right: 16),
+          margin: EdgeInsets.only(left: 16, right: 16),
           child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
