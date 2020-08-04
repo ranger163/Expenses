@@ -125,19 +125,23 @@ class _MyHomePageState extends State<MyHomePage> {
                               MediaQuery.of(context).padding.top) *
                           0.7,
                       child: _transactionsList.isEmpty
-                          ? Column(
-                              children: <Widget>[
-                                Container(
-                                    height: 200,
-                                    child: Image.asset(
-                                      'assets/images/waiting.png',
-                                      fit: BoxFit.cover,
-                                    )),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text('No transactions added yet.')
-                              ],
+                          ? LayoutBuilder(
+                              builder: (context, constraints) {
+                                return Column(
+                                  children: <Widget>[
+                                    Container(
+                                        height: constraints.maxHeight * 0.6,
+                                        child: Image.asset(
+                                          'assets/images/waiting.png',
+                                          fit: BoxFit.cover,
+                                        )),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text('No transactions added yet.')
+                                  ],
+                                );
+                              },
                             )
                           : TransactionsItemList(
                               _transactionsList, _removeTransaction),
