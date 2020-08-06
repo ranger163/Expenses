@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionItem extends StatelessWidget {
-
   const TransactionItem({
     Key key,
     @required this.transaction,
@@ -16,13 +15,13 @@ class TransactionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+      margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
       elevation: 4,
       child: ListTile(
         leading: CircleAvatar(
           radius: 30,
           child: Padding(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: FittedBox(child: Text('\$${transaction.amount}'))),
         ),
         title: Text(
@@ -32,13 +31,13 @@ class TransactionItem extends StatelessWidget {
         subtitle: Text(DateFormat.yMMMd().format(transaction.date)),
         trailing: MediaQuery.of(context).size.width > 460
             ? FlatButton.icon(
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
                 textColor: Theme.of(context).errorColor,
-                label: Text('Delete'),
+                label: const Text('Delete'),
                 onPressed: () => removeTransaction(transaction.id),
               )
             : IconButton(
-                icon: Icon(Icons.delete),
+                icon: const Icon(Icons.delete),
                 color: Theme.of(context).errorColor,
                 onPressed: () => removeTransaction(transaction.id),
               ),

@@ -125,10 +125,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           'assets/images/waiting.png',
                           fit: BoxFit.cover,
                         )),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
-                    Text('No transactions added yet.')
+                    const Text('No transactions added yet.')
                   ],
                 );
               },
@@ -139,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final pageBody = SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.only(left: 16, right: 16),
+          margin: const EdgeInsets.only(left: 16, right: 16),
           child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -148,7 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Text('Show Charts',style:Theme.of(context).textTheme.headline6),
+                    Text('Show Charts',
+                        style: Theme.of(context).textTheme.headline6),
                     Switch.adaptive(
                         activeColor: Theme.of(context).accentColor,
                         value: _showCharts,
@@ -165,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           appBar.preferredSize.height -
                           mediaQuery.padding.top) *
                       0.2,
-                  margin: EdgeInsets.only(bottom: 8),
+                  margin: const EdgeInsets.only(bottom: 8),
                   child: Charts(_recentTransactions),
                 ),
               if (!isLandscape) txListWidget,
@@ -176,7 +177,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 appBar.preferredSize.height -
                                 mediaQuery.padding.top) *
                             0.7,
-                        margin: EdgeInsets.only(bottom: 8),
+                        margin: const EdgeInsets.only(bottom: 8),
                         child: Charts(_recentTransactions),
                       )
                     : txListWidget
@@ -191,7 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
             navigationBar: appBar,
             child: SingleChildScrollView(
               child: Container(
-                margin: EdgeInsets.only(left: 16, right: 16),
+                margin: const EdgeInsets.only(left: 16, right: 16),
                 child: Column(
 //        mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -200,7 +201,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text('Show Charts'),
+                          const Text('Show Charts'),
                           Switch.adaptive(
                               activeColor: Theme.of(context).accentColor,
                               value: _showCharts,
@@ -217,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 appBar.preferredSize.height -
                                 mediaQuery.padding.top) *
                             0.2,
-                        margin: EdgeInsets.only(bottom: 8),
+                        margin: const EdgeInsets.only(bottom: 8),
                         child: Charts(_recentTransactions),
                       ),
                     if (!isLandscape) txListWidget,
@@ -228,7 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       appBar.preferredSize.height -
                                       mediaQuery.padding.top) *
                                   0.7,
-                              margin: EdgeInsets.only(bottom: 8),
+                              margin: const EdgeInsets.only(bottom: 8),
                               child: Charts(_recentTransactions),
                             )
                           : txListWidget
@@ -245,7 +246,7 @@ class _MyHomePageState extends State<MyHomePage> {
             floatingActionButton: isIos
                 ? Container()
                 : FloatingActionButton(
-                    child: Icon(Icons.add),
+                    child: const Icon(Icons.add),
                     onPressed: () => _startAddNewTransactionSheet(context),
                   ),
           );
