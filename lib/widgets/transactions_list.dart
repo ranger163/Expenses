@@ -1,6 +1,6 @@
 import 'package:expenses/models/transaction.dart';
+import 'package:expenses/widgets/transaction_item.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 /// This class is used to Display transaction item widget with its data
 class TransactionsItemList extends StatelessWidget {
@@ -13,40 +13,9 @@ class TransactionsItemList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return Card(
-          margin: EdgeInsets.symmetric(vertical: 4, horizontal: 4),
-          elevation: 4,
-          child: ListTile(
-            leading: CircleAvatar(
-              radius: 30,
-              child: Padding(
-                  padding: EdgeInsets.all(8),
-                  child: FittedBox(
-                      child: Text('\$${_transactionsList[index].amount}'))),
-            ),
-            title: Text(
-              _transactionsList[index].title,
-              style: Theme.of(context).textTheme.title,
-            ),
-            subtitle:
-                Text(DateFormat.yMMMd().format(_transactionsList[index].date)),
-            trailing: MediaQuery.of(context).size.width > 460
-                ? FlatButton.icon(
-                    icon: Icon(
-                      Icons.delete
-                    ),textColor: Theme.of(context).errorColor,
-                    label: Text('Delete'),
-                    onPressed: () =>
-                        _removeTransaction(_transactionsList[index].id),
-                  )
-                : IconButton(
-                    icon: Icon(Icons.delete),
-                    color: Theme.of(context).errorColor,
-                    onPressed: () =>
-                        _removeTransaction(_transactionsList[index].id),
-                  ),
-          ),
-        );
+        return TransactionItem(
+            transaction: _transactionsList[index],
+            removeTransaction: _removeTransaction);
       },
       itemCount: _transactionsList.length,
     );
